@@ -920,6 +920,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DebugPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 2169272630008489445, guid: 90fdb2814baa0fe44951db1f6f258ad6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90fdb2814baa0fe44951db1f6f258ad6, type: 3}
 --- !u!224 &1151912154 stripped
