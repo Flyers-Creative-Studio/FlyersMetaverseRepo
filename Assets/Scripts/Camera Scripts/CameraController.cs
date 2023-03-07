@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     public Transform target;
     public FixedTouchField TouchField;
     private bool isFirstpersonBool;
-    //public PlayerView playerViewEnum;
+    public PlayerView playerViewEnum;
     public LayerMask withOutCamreaCulling;
     public LayerMask withCameraCulling;
     public bool isFirstPerson
@@ -24,8 +24,10 @@ public class CameraController : MonoBehaviour
                 //delay of total blend time of two camera views
                 HelperUtil.CallAfterDelay(() => 
                 {
-                    //playerViewEnum = PlayerView.fpv;
+                    playerViewEnum = PlayerView.fpv;
                     Camera.main.cullingMask = withOutCamreaCulling;
+                    target.transform.GetChild(1).gameObject.SetActive(false);
+
                 }, 1f);
                 
                 tpsCamera.Priority = 0;
@@ -34,11 +36,13 @@ public class CameraController : MonoBehaviour
             else
 			{
 				//delay of total blend time of two camera views
-				//playerViewEnum = PlayerView.tpv;
+				playerViewEnum = PlayerView.tpv;
 				Camera.main.cullingMask = withCameraCulling;
 				fpsCamera.Priority = 0;
 				tpsCamera.Priority = 1;
-			}
+                target.transform.GetChild(1).gameObject.SetActive(true);
+
+            }
         }
 	}
     public float CameraAngleSpeed = 1;
@@ -49,7 +53,7 @@ public class CameraController : MonoBehaviour
     // cinemachine
     public GameObject CinemachineCameraTarget;
     private float _cinemachineTargetYaw;
-    private float _cinemachineTargetPitch;
+    public float _cinemachineTargetPitch;
     private float CameraAngleOverride;
 
     [Tooltip("How far in degrees can you move the camera top")]
@@ -74,9 +78,10 @@ public class CameraController : MonoBehaviour
         // clamp our rotations so our values are limited 360 degrees
         _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
         _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
-
+      //  Debug.Log(_cinemachineTargetPitch);
+       
         // Cinemachine will follow this target
-        CinemachineCameraTarget.transform.rotation = Quaternion.Euler(-_cinemachineTargetPitch + CameraAngleOverride,
-            -_cinemachineTargetYaw, 0.0f);
+        CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
+            _cinemachineTargetYaw, 0.0f);
     }
 }

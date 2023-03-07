@@ -450,12 +450,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e045fbce16aa4c478bd72fe792d3b5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultObject: {fileID: 0}
+  _gameLibraryRef: {fileID: 0}
   messagePopupPrefab: {fileID: 0}
+  detailedMessagePopupPrefab: {fileID: 0}
   messagePopupPrefablandScap: {fileID: 0}
   loadingScreenPrefab: {fileID: 0}
   downloadLoadingScreenPrefab: {fileID: 0}
   loadingScreen: {fileID: 0}
   downloadLoadingScreen: {fileID: 0}
+  fpscounter: {fileID: 0}
+  miniMapUrl: 
+  converImageURL: 
+  worldId: 
 --- !u!4 &1904955903
 Transform:
   m_ObjectHideFlags: 0
@@ -2752,6 +2759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 3565509477026620962}
   TouchField: {fileID: 539580419942027775}
+  playerViewEnum: 0
   withOutCamreaCulling:
     serializedVersion: 2
     m_Bits: 951
@@ -2763,6 +2771,7 @@ MonoBehaviour:
   tpsCamera: {fileID: 2000053706754188122}
   fpsCamera: {fileID: 539580419601517185}
   CinemachineCameraTarget: {fileID: 8414677262668940739}
+  _cinemachineTargetPitch: 0
   TopClamp: 70
   BottomClamp: -30
 --- !u!4 &539580419108066921
@@ -3223,7 +3232,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3661639628750336703, guid: 7e0223e1d3e1733499accfa5ebffb67e, type: 3}
+  - {fileID: 2100000, guid: e3eafd10d0bac3d4681a6a9231287a20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
