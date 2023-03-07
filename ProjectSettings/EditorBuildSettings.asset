@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/WebGLExample.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/WebGLExample2.unity
     guid: 5644dccccbb763840ba8713c1341fb7b
+  - enabled: 1
+    path: Assets/Input_Pack/__Project_Files/Scene/Player.unity
+    guid: 4665f5be45946344cbcd1bfb0dbb0f23
   m_configObjects: {}
