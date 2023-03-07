@@ -17,9 +17,9 @@ using UnityEngine;
         {
             avatar = args.Avatar;
             AvatarAnimatorHelper.SetupAnimator(args.Metadata.BodyType, avatar);
+            OnAvatarLoaded();
+
         };
-        avatarLoader.LoadAvatar(avatarUrl);
-        OnAvatarLoaded();
         if (AvatarHolderManager.instance.MaleAvatar)
         {
             avatarLoader.LoadAvatar(avatarUrl);
@@ -40,7 +40,7 @@ using UnityEngine;
        
        if(AvatarHolderManager.instance.avatar==null) AvatarHolderManager.instance.avatar = this.avatar;
         AvatarHolderManager.instance.LoadMetaverseScene();
-        Debug.Log(avatar.GetComponent<Animator>().avatar.name);
+      
        
     }
  }
