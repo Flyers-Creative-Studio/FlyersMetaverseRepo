@@ -35,16 +35,15 @@ public class PlayerManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(doorExit) )
-        {
-            OnClickBagButton(false, null);
-        }
+        //if (other.CompareTag(doorExit) )
+        //{
+        //    OnClickBagButton(false, null);
+        //}
 
     }
     public void OnTriggerExit(Collider other)
     {
-		if (removeHouseFromLease.gameObject.activeSelf)
-            removeHouseFromLease.gameObject.SetActive(false);
+		
     }
 
 

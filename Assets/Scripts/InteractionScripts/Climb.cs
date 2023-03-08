@@ -4,7 +4,8 @@ using UnityEngine;
 
     public class Climb : InteractableObject {
 
-        public override void OnInteraction(InteractionType interactionType, string tag, bool isStay = false) {
+        public override void OnInteraction(InteractionType interactionType, string tag)
+        {
             if (interactionType == InteractionType.enter) {
             Scene1Manager.Instance.player.SetInteraction(() => {
                    

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ElevatorInteraction : InteractableObject
 {
-    public override void OnInteraction(InteractionType interactionType, string tag, bool isStay = false)
+    public override void OnInteraction(InteractionType interactionType, string tag)
     {
         if (interactionType == InteractionType.enter)
         {

@@ -1103,7 +1103,7 @@ GameObject:
   - component: {fileID: 1904955903}
   - component: {fileID: 1904955902}
   m_Layer: 0
-  m_Name: HelperData
+  m_Name: HelperUtils
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1121,13 +1121,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e045fbce16aa4c478bd72fe792d3b5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultObject: {fileID: 0}
-  _gameLibraryRef: {fileID: 0}
-  messagePopupPrefab: {fileID: 0}
-  detailedMessagePopupPrefab: {fileID: 0}
-  messagePopupPrefablandScap: {fileID: 0}
-  loadingScreenPrefab: {fileID: 0}
-  downloadLoadingScreenPrefab: {fileID: 0}
+  defaultObject: {fileID: -3661639628750336703, guid: 7e0223e1d3e1733499accfa5ebffb67e,
+    type: 3}
+  _gameLibraryRef: {fileID: 11400000, guid: e7dc5d52e47108f498855d31b7c482d6, type: 2}
+  messagePopupPrefab: {fileID: 3471091896773728464, guid: ebc1fd35b454e404781a9a810fc6296c,
+    type: 3}
+  detailedMessagePopupPrefab: {fileID: 3471091896773728464, guid: bf366fb20e292b745918f56f1786afd4,
+    type: 3}
+  messagePopupPrefablandScap: {fileID: 3471091896773728464, guid: e00707846c8ba5146bdd29b2018904fa,
+    type: 3}
+  loadingScreenPrefab: {fileID: 3168143049508422463, guid: 7c5ded088caf74e408174d943a82c423,
+    type: 3}
+  downloadLoadingScreenPrefab: {fileID: 2933211108525237585, guid: 65ef222b578a12f40a3f9bbd2eb6a3e7,
+    type: 3}
   loadingScreen: {fileID: 0}
   downloadLoadingScreen: {fileID: 0}
   fpscounter: {fileID: 0}
@@ -1178,6 +1184,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   avatar: {fileID: 0}
+  MaleDefaultavatar: {fileID: 2825790522195523147, guid: b39834e5314a7de4ba5795998a1903df,
+    type: 3}
+  FemaleDefaultavatar: {fileID: 8395179019891590211, guid: 70261a5cc85465a4cb0c17bbdf512d9f,
+    type: 3}
   MaleAvatar: 1
 --- !u!4 &1950813732
 Transform:

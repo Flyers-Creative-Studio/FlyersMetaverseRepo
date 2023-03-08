@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 8599a5d8eb6aa0d428f5461e3cdbdcb9
+  m_SerializeEntries:
+  - m_GUID: 4cdc76f6e4aa5af4a9f93962dc72cf9f
+    m_Address: Assets/Scenes/Lobby.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Scenes
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6268864e7b3644b4b8d296330a89ec9e
+    m_Address: Assets/Scenes/Healthee.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Scenes
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: cff69416e19115240b17800419103e3c, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: b10b4b4d5aac13343839f9b3545706b2, type: 2}
+    - {fileID: 11400000, guid: ff87828e99b3ef04c94efd96f202b280, type: 2}

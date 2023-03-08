@@ -5,7 +5,7 @@ public static class StaticLibrary
         public const string Init = "GameInit";
         public const string Home = "Home";
         public const string Lobby = "Lobby";
-        public const string Helathee = "Helathee";
+        public const string Healthee = "Healthee";
         public const string Mechano = "Mechano";
         public const string Questy = "Questy";
         public const string Extroverse = "Extroverse";

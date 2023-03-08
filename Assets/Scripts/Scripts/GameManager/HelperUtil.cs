@@ -408,7 +408,134 @@ public class HelperUtil : MonoBehaviour
     }
     #endregion
 
- 
+    #region Download Image
+
+    public static Dictionary<string, Texture> userProfilePicDictionary = new Dictionary<string, Texture>();
+    public static void GetTextureFromURL(RawImage image, string url, Action onSuccess = null)
+    {
+        //if (userProfilePicDictionary.ContainsKey(url))
+        //{
+        //    image.texture = userProfilePicDictionary[url];
+        //}
+        //else
+        //{
+        instance.StartCoroutine(enumerator());
+        IEnumerator enumerator()
+        {
+            UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(url);
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.isHttpError || webRequest.isNetworkError)
+            {
+                Debug.Log("Network Error" + webRequest.error);
+            }
+            else
+            {
+                Texture imageTexture = ((DownloadHandlerTexture)webRequest.downloadHandler).texture;
+                //if (!userProfilePicDictionary.ContainsKey(url))
+                //{
+                //    userProfilePicDictionary.Add(url, imageTexture);
+                //}
+                if (image) image.texture = imageTexture;
+
+                //Call OnSuccess callback if any.
+                onSuccess?.Invoke();
+            }
+        }
+        //}
+    }
+
+    public Dictionary<string, Texture> universalTextureData = new Dictionary<string, Texture>();
+
+    public static void SetTexture(string url, Action<Texture> textureSetCallback, Texture defaultTexture = null)
+    {
+        if (url != null)
+        {
+            if (instance.universalTextureData.ContainsKey(url))
+            {
+                textureSetCallback(instance.universalTextureData[url]);
+            }
+            else if (url.Contains(".png") || url.Contains(".jpeg") || url.Contains(".jpg"))
+            {
+                //If the tecture already exist in the database.
+                if (PlayerPrefs.HasKey(url))
+                {
+                    try
+                    {
+                        byte[] textureData = File.ReadAllBytes(PlayerPrefs.GetString(url));
+                        Texture2D tex = new Texture2D(2, 2);
+                        tex.LoadImage(textureData);
+                        instance.universalTextureData.AddIfNotAvailable(url, tex);
+                        textureSetCallback(tex);
+                    }
+                    catch
+                    {
+                        DownloadTexture();
+                    }
+                }
+                else DownloadTexture();
+
+                void DownloadTexture()
+                {
+                    //if (url.ToUpper().Contains("PDF") || url.ToUpper().Contains("txt") || url.ToUpper().Contains("MP3") || url.ToUpper().Contains("WAV"))
+                    //{
+                    //    if (defaultTexture != null) textureSetCallback(defaultTexture);
+                    //}
+                    //else
+                    instance.StartCoroutine(enumerator());
+                    IEnumerator enumerator()
+                    {
+                        UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(url);
+                        yield return webRequest.SendWebRequest();
+
+                        if (!webRequest.isHttpError && !webRequest.isNetworkError)
+                        {
+                            Texture2D downloadedTexture = ((DownloadHandlerTexture)webRequest.downloadHandler).texture;
+
+                            //Saving the file into the local storage.
+                            string filePath = Path.Combine(Application.persistentDataPath, "Image_" + UnityEngine.Random.Range(0, 999999999) + ".png");
+                            File.WriteAllBytes(filePath, downloadedTexture.EncodeToPNG());
+                            PlayerPrefs.SetString(url, filePath);
+                            if (downloadedTexture != null)
+                            {
+                                instance.universalTextureData.AddIfNotAvailable(url, downloadedTexture);
+                                textureSetCallback(downloadedTexture);
+                            }
+                        }
+                        else if (defaultTexture != null) textureSetCallback(defaultTexture);
+                    }
+
+                }
+            }
+            else if (url.Contains(".mp4"))
+            {
+                if (defaultTexture != null) textureSetCallback(GameLibrary.GetSprite("video_background").texture);
+            }
+            else if (url.Contains(".txt") || url.Contains(".json"))
+            {
+                if (defaultTexture != null) textureSetCallback(GameLibrary.GetSprite("text_background").texture);
+            }
+            else if (url.Contains(".pdf"))
+            {
+                if (defaultTexture != null) textureSetCallback(GameLibrary.GetSprite("pdf_background").texture);
+            }
+            else if (url.Contains(".zip"))
+            {
+                if (defaultTexture != null) textureSetCallback(GameLibrary.GetSprite("3d_model_background").texture);
+            }
+            else if (url.Contains(".mp3"))
+            {
+                if (defaultTexture != null) textureSetCallback(GameLibrary.GetSprite("music_background").texture);
+            }
+            else
+            {
+                if (defaultTexture != null) textureSetCallback(GameLibrary.defaultImage.texture);
+            }
+        }
+    }
+
+    #endregion
+
 
     #region Manage Text Length
     public string ManageLenghtOfText(string Text, int maxlimit)
@@ -441,7 +568,7 @@ public class HelperUtil : MonoBehaviour
         {
             return GameLibrary.LobbySceneref;
         }
-        else if (sceneType == SceneType.Helathee)
+        else if (sceneType == SceneType.Healthee)
         {
             return GameLibrary.HealtheeRef;
         }

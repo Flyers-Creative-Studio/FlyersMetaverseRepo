@@ -271,7 +271,7 @@ public enum InteractionType
 public enum SceneType
 {
     Lobby,
-    Helathee,
+    Healthee,
     Mechano,
     Questy,
     Extroverse

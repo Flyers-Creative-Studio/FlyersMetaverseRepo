@@ -10,6 +10,7 @@ public class AvatarHolderManager : MonoBehaviour {
         get; set;
     }
     public GameObject avatar;
+    public GameObject MaleDefaultavatar,FemaleDefaultavatar;
     public bool MaleAvatar;
     private void Awake() {
         if (instance == null) {

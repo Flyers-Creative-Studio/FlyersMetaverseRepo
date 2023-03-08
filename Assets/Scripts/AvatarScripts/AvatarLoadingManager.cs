@@ -52,7 +52,6 @@ public class AvatarLoadingManager : MonoBehaviour
 
                 }
 
-                Debug.Log("in2");
 
             }
 
