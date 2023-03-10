@@ -13,7 +13,7 @@ public class AvatarDelayLoader : MonoBehaviour
 
     IEnumerator loadAvatar()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
         AvatarLoader.SetActive(true);
     }
 }

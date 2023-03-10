@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
@@ -8,9 +9,9 @@ using UnityEngine.SceneManagement;
 
 public class PortalIInteraction : InteractableObject
 {
-    [SerializeField] AssetReference _scene;
     public SceneType sceneType;
     public PlayerManager player;
+ 
    // public AvatarLoadingManager AvatarLoadingManagerRef;
 
     public override void OnInteraction(InteractionType interactionType, string tag)
@@ -19,30 +20,9 @@ public class PortalIInteraction : InteractableObject
         {
             player.SetInteraction(() =>
             {
-                //var asyncSceneRef = SceneManager.LoadSceneAsync(StaticLibrary.SceneName.DownloadingScene, LoadSceneMode.Single);
-                //asyncSceneRef.completed += (data) =>
-                //{
-                //    HelperUtil.ShowLoading();
-                //    HelperUtil.CallAfterDelay(() =>
-                //    {
-                //        HelperUtil.LoadSceneWithAdressable((asynceRef) =>
-                //        {
-                //            HelperUtil.HideDownloadLoading();
-                //            HelperUtil.HideLoading();
-                //            if (asynceRef.Status == AsyncOperationStatus.Succeeded)
-                //            {
 
-                //            }
-                //            if (asynceRef.Status == AsyncOperationStatus.Failed)
-                //            {
-                //                HelperUtil.ShowMessage(GameMessage.InternetNotWorking);
-                //            }
-                //        }, sceneType.ToString());
-                //    }, 10f);
-                //};
-               
-                //  HelperUtil.instance.LoadDownloadingScene(sceneType.ToString());
-                CheckLoading();
+               // HelperUtil.instance.LoadDownloadingScene(sceneType.ToString());
+                LoadAddressable();
 
             }, "Explore");
         }
@@ -51,21 +31,38 @@ public class PortalIInteraction : InteractableObject
             player.HideInteractionUI();
         }
     }
-    public void CheckLoading()
+    public void LoadAddressable()
     {
-      
+        if (AvatarHolderManager.instance.avatar!=null)
+        {
             AvatarHolderManager.instance.avatar.transform.SetParent(AvatarHolderManager.instance.transform);
             AvatarHolderManager.instance.avatar.SetActive(false);
-        
-        StartCoroutine(Start2());
+        }
+       
+           
+        Debug.Log(sceneType);
+        // StartCoroutine(StartLoad());
+        //  HelperUtil.LoadScenesWithAdressable(sceneType.ToString(),"Scenes");
+         HelperUtil.instance.LoadDownloadingScene(sceneType.ToString());
+
+        //AsyncOperationHandle obj= Addressables.LoadSceneAsync("Downloading", LoadSceneMode.Single);
+        //obj.Completed += (data) =>
+        //{
+        //    Addressables.LoadSceneAsync(_scene, LoadSceneMode.Single);
+
+        //};
     }
-    public IEnumerator Start2()
+  
+
+    public IEnumerator StartLoad()
     {
-        //Simple use case for loading a scene with the key "level1"
-        AsyncOperationHandle<SceneInstance> handle = Addressables.LoadSceneAsync(_scene, LoadSceneMode.Single);
+        HelperUtil.ShowLoading();
+
+        AsyncOperationHandle<SceneInstance> handle = Addressables.LoadSceneAsync(sceneType.ToString(), LoadSceneMode.Single);
+       
         yield return handle;
 
-        //....
+        
     }
     public AssetReference GetNextScene(SceneType sceneType)
     {

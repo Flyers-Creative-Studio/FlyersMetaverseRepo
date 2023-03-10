@@ -6,14 +6,18 @@ public class AvatarLoadingManager : MonoBehaviour
 {
     [SerializeField] GameObject PlayerGrp;
     [SerializeField] public GameObject Avatar, MaleDefaultAvatar, FemaleDefaultAvatar;
-    [SerializeField] GameObject MaleDefaultAvatarObjectRef, FemaleDefaultAvatarObjectRef;
+    GameObject MaleDefaultAvatarObjectRef, FemaleDefaultAvatarObjectRef;
     [SerializeField] Avatar Male, Female;
+     GameObject MainCamref;
     // Start is called before the first frame update
     void Awake() {
         PlayerGrp.SetActive(false);
-
+        MainCamref= Camera.main.gameObject;
     }
     private void Start() {
+
+        MainCamref.GetComponent<CameraController>().enabled = false;
+
         if (AvatarHolderManager.instance.avatar == null) {
             Debug.Log("in1");
 
@@ -74,6 +78,9 @@ public class AvatarLoadingManager : MonoBehaviour
 
         yield return new WaitForSeconds(.1f);
         PlayerGrp.SetActive(true);
+        MainCamref.GetComponent<CameraController>().enabled = true;
+
+        this.gameObject.SetActive(false);
     }
 
 }

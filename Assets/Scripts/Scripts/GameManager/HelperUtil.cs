@@ -25,10 +25,12 @@ public class HelperUtil : MonoBehaviour
     private GameObject messagePopup;
     private GameObject detailedMessagePopup;
     [SerializeField] GameObject loadingScreenPrefab;
-    [SerializeField] GameObject downloadLoadingScreenPrefab;
+    [SerializeField] public GameObject downloadLoadingScreenPrefab;
     public GameObject loadingScreen;
     public GameObject downloadLoadingScreen;
     public Text fpscounter;
+
+    public AssetLabelReference assetLabelReference;
 
     [Header("WorldData")]
     public string miniMapUrl;
@@ -589,11 +591,12 @@ public class HelperUtil : MonoBehaviour
 
     public void LoadDownloadingScene(string sceneName)
     {
-        Screen.orientation = ScreenOrientation.Landscape;
+        //Screen.orientation = ScreenOrientation.Landscape;
 
         CallAfterDelay(() =>
         {
             var asyncSceneRef = SceneManager.LoadSceneAsync(StaticLibrary.SceneName.DownloadingScene, LoadSceneMode.Single);
+            //  AsyncOperationHandle asyncSceneRef = Addressables.DownloadDependenciesAsync(StaticLibrary.SceneName.DownloadingScene);
             asyncSceneRef.completed += (data) =>
             {
                 ShowLoading();
@@ -605,24 +608,7 @@ public class HelperUtil : MonoBehaviour
 
         }, 2f);
 
-
-        //CallAfterCondition(() =>
-        //{
-        //    CallAfterDelay(() =>
-        //    {
-        //        var asyncSceneRef = SceneManager.LoadSceneAsync(StaticLibrary.SceneName.DownloadingScene, LoadSceneMode.Single);
-        //        asyncSceneRef.completed += (data) =>
-        //        {
-        //            ShowLoading();
-        //            CallAfterDelay(() =>
-        //            {
-        //                LoadScenesWithAdressable(sceneName, "Scenes");
-        //            }, 2f);
-        //        };
-
-        //    }, 2f);
-
-        //}, () => Screen.orientation == ScreenOrientation.Landscape, null);
+      
     }
     public void LoadDownloadingSceneStandAlone(string sceneName)
     {
@@ -636,6 +622,7 @@ public class HelperUtil : MonoBehaviour
             }, 2f);
         };
     }
+   
     public void LoadDownloadingRequiredScene(string sceneName, Action onLoadScene)
     {
         ShowLoading();
@@ -647,7 +634,7 @@ public class HelperUtil : MonoBehaviour
                 HideDownloadLoading();
                 if (asynceRef.Status == AsyncOperationStatus.Succeeded)
                 {
-
+                    Debug.Log("Loading Completed");
                 }
                 if (asynceRef.Status == AsyncOperationStatus.Failed)
                 {
@@ -674,7 +661,7 @@ public class HelperUtil : MonoBehaviour
         instance.StartCoroutine(ShowDownloadLoading(asyncoperation));
         IEnumerator ShowDownloadLoading(AsyncOperationHandle<SceneInstance> downloadingFileReference)
         {
-            ShowLoading();
+           // ShowLoading();
             if (!instance.downloadLoadingScreen)
             {
                 instance.downloadLoadingScreen = Instantiate(instance.downloadLoadingScreenPrefab);
@@ -683,8 +670,11 @@ public class HelperUtil : MonoBehaviour
             }
             Slider downloadSlider = instance.downloadLoadingScreen.transform.GetChild(0).GetChild(0).GetComponent<Slider>();
             downloadSlider.value = 0;
+            Debug.Log(downloadingFileReference.GetDownloadStatus().Percent);
             while (!downloadingFileReference.GetDownloadStatus().IsDone)
             {
+                Debug.Log(downloadingFileReference.GetDownloadStatus().Percent);
+
                 if (downloadingFileReference.GetDownloadStatus().TotalBytes > 0)
                 {
                     if (instance.loadingScreen.activeSelf)
@@ -701,11 +691,16 @@ public class HelperUtil : MonoBehaviour
 
     public static void LoadScenesWithAdressable(string sceneName, string refData)
     {
-        AsyncOperationHandle asyncoperation = Addressables.DownloadDependenciesAsync(refData);
+         //  AsyncOperationHandle asyncoperation = Addressables.DownloadDependenciesAsync(refData);
+          AsyncOperationHandle asyncoperation = Addressables.DownloadDependenciesAsync(sceneName);
+     //  AsyncOperationHandle asyncoperation = Addressables.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+        
         instance.StartCoroutine(ShowDownloadLoading(asyncoperation));
         IEnumerator ShowDownloadLoading(AsyncOperationHandle downloadingFileReference)
         {
-            ShowLoading();
+           
+
+           // ShowLoading();
             if (!instance.downloadLoadingScreen)
             {
                 instance.downloadLoadingScreen = Instantiate(instance.downloadLoadingScreenPrefab);
@@ -714,8 +709,12 @@ public class HelperUtil : MonoBehaviour
             }
             Slider downloadSlider = instance.downloadLoadingScreen.transform.GetChild(0).GetChild(0).GetComponent<Slider>();
             downloadSlider.value = 0;
+           
+
             while (!downloadingFileReference.GetDownloadStatus().IsDone)
             {
+               
+                downloadSlider.value = downloadingFileReference.GetDownloadStatus().Percent;
                 if (downloadingFileReference.GetDownloadStatus().TotalBytes > 0)
                 {
                     if (instance.loadingScreen.activeSelf)
@@ -732,6 +731,7 @@ public class HelperUtil : MonoBehaviour
         {
             instance.LoadDownloadingRequiredScene(sceneName, null);
         };
+        
     }
 
     public void JsonDownload(string url, Action<string> onSuccess)

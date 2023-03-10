@@ -34,7 +34,7 @@ public class AvatarHolderManager : MonoBehaviour {
         yield return new WaitForSeconds(2f);
         avatar.SetActive(false);
 
-        SceneManager.LoadScene(1);
+       // SceneManager.LoadScene(1);
 
     }
     

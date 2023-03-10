@@ -1137,6 +1137,8 @@ MonoBehaviour:
   loadingScreen: {fileID: 0}
   downloadLoadingScreen: {fileID: 0}
   fpscounter: {fileID: 0}
+  assetLabelReference:
+    m_LabelString: Scenes
   miniMapUrl: 
   converImageURL: 
   worldId: 
