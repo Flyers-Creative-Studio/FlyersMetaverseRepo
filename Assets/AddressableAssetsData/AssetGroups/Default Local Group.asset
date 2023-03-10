@@ -17,14 +17,14 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 8599a5d8eb6aa0d428f5461e3cdbdcb9
   m_SerializeEntries:
-  - m_GUID: 4cdc76f6e4aa5af4a9f93962dc72cf9f
-    m_Address: Assets/Scenes/Lobby.unity
+  - m_GUID: 6268864e7b3644b4b8d296330a89ec9e
+    m_Address: Assets/Scenes/Healthee.unity
     m_ReadOnly: 0
     m_SerializedLabels:
     - Scenes
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6268864e7b3644b4b8d296330a89ec9e
-    m_Address: Assets/Scenes/Healthee.unity
+  - m_GUID: 4cdc76f6e4aa5af4a9f93962dc72cf9f
+    m_Address: Assets/Scenes/Lobby.unity
     m_ReadOnly: 0
     m_SerializedLabels:
     - Scenes

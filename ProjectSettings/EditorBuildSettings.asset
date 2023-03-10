@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Lobby.unity
     guid: 4cdc76f6e4aa5af4a9f93962dc72cf9f
   - enabled: 1
-    path: Assets/Scenes/Healthee.unity
-    guid: 6268864e7b3644b4b8d296330a89ec9e
-  - enabled: 1
     path: Assets/Scenes/Downloading.unity
     guid: 988b95a8d8352fd48a42f4181ffaf271
   m_configObjects:

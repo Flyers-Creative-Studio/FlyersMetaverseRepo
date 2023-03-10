@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DefaultGroup: 8599a5d8eb6aa0d428f5461e3cdbdcb9
   m_OptimizeCatalogSize: 0
-  m_BuildRemoteCatalog: 0
+  m_BuildRemoteCatalog: 1
   m_BundleLocalCatalog: 0
   m_CatalogRequestsTimeout: 0
   m_DisableCatalogUpdateOnStart: 0
@@ -32,9 +32,9 @@ MonoBehaviour:
   m_CheckForContentUpdateRestrictionsOption: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
-    m_Id: 
+    m_Id: ac3cbce3bcb58d94a9e61ccaa0df5c9a
   m_RemoteCatalogLoadPath:
-    m_Id: 
+    m_Id: 1fbd5e6487b2c93458c609698ddbf361
   m_ContentStateBuildPathProfileVariableName: <default settings path>
   m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
@@ -63,7 +63,7 @@ MonoBehaviour:
       - m_Id: ac3cbce3bcb58d94a9e61ccaa0df5c9a
         m_Value: ServerData/[BuildTarget]
       - m_Id: 1fbd5e6487b2c93458c609698ddbf361
-        m_Value: http://localhost/[BuildTarget]
+        m_Value: https://990abebe-8fb5-46e1-8520-e33dc49dcf4c.client-api.unity3dusercontent.com/client_api/v1/environments/test/buckets/3d766ba8-ab2a-4fae-b725-cad0d6a1a425/releases/23359c00-a934-4d60-b17b-5c27dae0f659/entry_by_path/content/?path=
     m_ProfileEntryNames:
     - m_Id: 272f1dbf536ec214ab9b0cc696ddbb2c
       m_Name: BuildTarget

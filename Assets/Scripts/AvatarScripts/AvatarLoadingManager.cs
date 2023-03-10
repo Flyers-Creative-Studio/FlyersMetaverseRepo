@@ -5,7 +5,7 @@ using UnityEngine;
 public class AvatarLoadingManager : MonoBehaviour
 {
     [SerializeField] GameObject PlayerGrp;
-    [SerializeField] GameObject Avatar, MaleDefaultAvatar, FemaleDefaultAvatar;
+    [SerializeField] public GameObject Avatar, MaleDefaultAvatar, FemaleDefaultAvatar;
     [SerializeField] GameObject MaleDefaultAvatarObjectRef, FemaleDefaultAvatarObjectRef;
     [SerializeField] Avatar Male, Female;
     // Start is called before the first frame update
@@ -48,6 +48,7 @@ public class AvatarLoadingManager : MonoBehaviour
                     if (Avatar.GetComponent<Animator>() != null) Avatar.GetComponent<Animator>().enabled = false;
                     Avatar.transform.SetParent(PlayerGrp.transform);
                     Avatar.transform.localPosition = Vector3.zero;
+                    Avatar.transform.rotation = Quaternion.identity;
 
 
                 }

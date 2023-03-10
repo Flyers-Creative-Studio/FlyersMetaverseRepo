@@ -590,23 +590,39 @@ public class HelperUtil : MonoBehaviour
     public void LoadDownloadingScene(string sceneName)
     {
         Screen.orientation = ScreenOrientation.Landscape;
-        CallAfterCondition(() =>
+
+        CallAfterDelay(() =>
         {
-            CallAfterDelay(() =>
+            var asyncSceneRef = SceneManager.LoadSceneAsync(StaticLibrary.SceneName.DownloadingScene, LoadSceneMode.Single);
+            asyncSceneRef.completed += (data) =>
             {
-                var asyncSceneRef = SceneManager.LoadSceneAsync(StaticLibrary.SceneName.DownloadingScene, LoadSceneMode.Single);
-                asyncSceneRef.completed += (data) =>
+                ShowLoading();
+                CallAfterDelay(() =>
                 {
-                    ShowLoading();
-                    CallAfterDelay(() =>
-                    {
-                        LoadScenesWithAdressable(sceneName, "Scenes");
-                    }, 2f);
-                };
+                    LoadScenesWithAdressable(sceneName, "Scenes");
+                }, 2f);
+            };
 
-            }, 2f);
+        }, 2f);
 
-        }, () => Screen.orientation == ScreenOrientation.Landscape, null);
+
+        //CallAfterCondition(() =>
+        //{
+        //    CallAfterDelay(() =>
+        //    {
+        //        var asyncSceneRef = SceneManager.LoadSceneAsync(StaticLibrary.SceneName.DownloadingScene, LoadSceneMode.Single);
+        //        asyncSceneRef.completed += (data) =>
+        //        {
+        //            ShowLoading();
+        //            CallAfterDelay(() =>
+        //            {
+        //                LoadScenesWithAdressable(sceneName, "Scenes");
+        //            }, 2f);
+        //        };
+
+        //    }, 2f);
+
+        //}, () => Screen.orientation == ScreenOrientation.Landscape, null);
     }
     public void LoadDownloadingSceneStandAlone(string sceneName)
     {
