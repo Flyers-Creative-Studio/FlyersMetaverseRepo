@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class AvatarLoadingManager : MonoBehaviour
 {
     [SerializeField] GameObject PlayerGrp;
     [SerializeField] public GameObject Avatar, MaleDefaultAvatar, FemaleDefaultAvatar;
-    GameObject MaleDefaultAvatarObjectRef, FemaleDefaultAvatarObjectRef;
+    [SerializeField] GameObject MaleDefaultAvatarObjectRef, FemaleDefaultAvatarObjectRef;
     [SerializeField] Avatar Male, Female;
      GameObject MainCamref;
     // Start is called before the first frame update
@@ -14,25 +14,53 @@ public class AvatarLoadingManager : MonoBehaviour
         PlayerGrp.SetActive(false);
         MainCamref= Camera.main.gameObject;
     }
-    private void Start() {
-
+    private void OnEnable() {
         MainCamref.GetComponent<CameraController>().enabled = false;
-
         if (AvatarHolderManager.instance.avatar == null) {
-            Debug.Log("in1");
+          //  Debug.Log("in1");
 
             //for Default avtar
             if (AvatarHolderManager.instance.MaleAvatar) {
-                MaleDefaultAvatarObjectRef = Instantiate(MaleDefaultAvatar, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                if (FemaleDefaultAvatarObjectRef != null) { 
+                    
+                    FemaleDefaultAvatarObjectRef.SetActive(false);
+                    FemaleDefaultAvatarObjectRef.transform.parent = null;
+                }
+                if (MaleDefaultAvatarObjectRef==null)
+                {
+                    MaleDefaultAvatarObjectRef = Instantiate(MaleDefaultAvatar, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                   
+                }
+                else
+                {
+                    MaleDefaultAvatarObjectRef.SetActive(true);
+
+                }
                 MaleDefaultAvatarObjectRef.transform.SetParent(PlayerGrp.transform);
                 MaleDefaultAvatarObjectRef.transform.localPosition = Vector3.zero;
+                MaleDefaultAvatarObjectRef.transform.localRotation = Quaternion.identity;
                 if (MaleDefaultAvatarObjectRef.GetComponent<Animator>() != null) MaleDefaultAvatarObjectRef.GetComponent<Animator>().enabled = false;
+
             } else {
-                FemaleDefaultAvatarObjectRef = Instantiate(FemaleDefaultAvatar, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                if (MaleDefaultAvatarObjectRef != null) { 
+                    MaleDefaultAvatarObjectRef.SetActive(false);
+                    MaleDefaultAvatarObjectRef.transform.parent = null;
+                }
+                if (FemaleDefaultAvatarObjectRef == null)
+                {
+                    FemaleDefaultAvatarObjectRef = Instantiate(FemaleDefaultAvatar, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                   
+                }
+                else
+                {
+                    FemaleDefaultAvatarObjectRef.SetActive(true);
+
+                }
+
                 FemaleDefaultAvatarObjectRef.transform.SetParent(PlayerGrp.transform);
                 FemaleDefaultAvatarObjectRef.transform.localPosition = Vector3.zero;
+                FemaleDefaultAvatarObjectRef.transform.localRotation = Quaternion.identity;
                 if (FemaleDefaultAvatarObjectRef.GetComponent<Animator>() != null) FemaleDefaultAvatarObjectRef.GetComponent<Animator>().enabled = false;
-
             }
             StartCoroutine(EnablePlayerObject());
         }
@@ -82,5 +110,8 @@ public class AvatarLoadingManager : MonoBehaviour
 
         this.gameObject.SetActive(false);
     }
+
+   
+   
 
 }

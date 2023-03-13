@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,11 @@ public class Scene1Manager : MonoBehaviour
 {
     public static Scene1Manager Instance;
     public PlayerManager player;
-    [SerializeField] Button CloseButton, ProfileButton;
+    [SerializeField] Button CloseButton, ProfileButton,GenderButton;
     [SerializeField] GameObject CanvasObject, DefaultMale, DefaultFemale,Maincamera;
     [SerializeField] GameObject AvatarCamera;
+    public static event Action OnGenderToggle;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -30,6 +33,7 @@ public class Scene1Manager : MonoBehaviour
 
         CloseButton.onClick.AddListener(() => CloseButtonListener());
         ProfileButton.onClick.AddListener(() => SettingButtonListener());
+        GenderButton.onClick.AddListener(() => GenderToggleListener());
     }
     void CloseButtonListener()
     {
@@ -51,7 +55,12 @@ public class Scene1Manager : MonoBehaviour
         DefaultMale.SetActive(AvatarHolderManager.instance.MaleAvatar);
         DefaultFemale.SetActive(!AvatarHolderManager.instance.MaleAvatar);
     }
-   
+    public void GenderToggleListener()
+    {
+        AvatarHolderManager.instance.MaleAvatar = !AvatarHolderManager.instance.MaleAvatar;
+        DefaultMale.SetActive(AvatarHolderManager.instance.MaleAvatar);
+        DefaultFemale.SetActive(!AvatarHolderManager.instance.MaleAvatar);
+    }
     void ResetAllDefaultAvatars()
     {
         DefaultMale.SetActive(false);
@@ -61,5 +70,9 @@ public class Scene1Manager : MonoBehaviour
     {
         CloseButton.onClick.RemoveAllListeners();
         ProfileButton.onClick.RemoveAllListeners();
+        GenderButton.onClick.RemoveAllListeners();
     }
+
+
+   
 }

@@ -668,7 +668,6 @@ GameObject:
   - component: {fileID: 1999698326}
   - component: {fileID: 1999698325}
   - component: {fileID: 1999698324}
-  - component: {fileID: 1999698323}
   m_Layer: 5
   m_Name: FlyButton
   m_TagString: Untagged
@@ -695,36 +694,6 @@ RectTransform:
   m_AnchoredPosition: {x: -128, y: 236}
   m_SizeDelta: {x: 105, y: 105}
   m_Pivot: {x: 1, y: 0}
---- !u!114 &1999698323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1999698321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 448cd6d8e2f2cb04096e777d99974bc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonStateOutputEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 539580418311938786}
-        m_TargetAssemblyTypeName: StarterAssets.UICanvasControllerInput, Assembly-CSharp
-        m_MethodName: VirtualJumpInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  buttonClickOutputEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1999698324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,7 +737,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1999698325}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4193110011570142362}
+        m_TargetAssemblyTypeName: FlightEnabler, Assembly-CSharp
+        m_MethodName: ApplyFlight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1999698325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3009,7 +2990,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539580419108066922}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 469.07, y: 1.2910004, z: 118.46601}
+  m_LocalPosition: {x: 469.07, y: 3.2910004, z: 118.46601}
   m_LocalScale: {x: 0, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 539580418160797737}
@@ -4118,7 +4099,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539580419601517187}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 469.07, y: 1.2910004, z: 122.60601}
+  m_LocalPosition: {x: 469.07, y: 3.2910004, z: 122.60601}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 539580419947597160}
@@ -4930,7 +4911,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000053706754187940}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 469.07, y: 1.2910004, z: 118.46601}
+  m_LocalPosition: {x: 469.07, y: 3.2910004, z: 118.46601}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2000053706295464607}
@@ -5024,7 +5005,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4193110011570142360}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children:
   - {fileID: 245208000}
@@ -5215,13 +5196,62 @@ GameObject:
   - component: {fileID: 477017047391494372}
   - component: {fileID: 4193110011570142356}
   - component: {fileID: 4193110011570142367}
+  - component: {fileID: 4193110011570142363}
+  - component: {fileID: 4193110011570142362}
+  - component: {fileID: 4193110011570142361}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!136 &4193110011570142361
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4193110011570142360}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.3
+  m_Height: 3
+  m_Direction: 2
+  m_Center: {x: 0, y: 1, z: 0.3}
+--- !u!114 &4193110011570142362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4193110011570142360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774e6ea43df7ac849864307a2b6bf2b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Isflight: 0
+--- !u!114 &4193110011570142363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4193110011570142360}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a30f82af9061349aeeb61c260e7393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jetPackForce: 20
+  FlyEnabled: 1
+  MoveSpeed: 60
+  SprintSpeed: 60
+  RotationSmoothTime: 0.12
+  SpeedChangeRate: 20
+  _mainCamera: {fileID: 539580419108066922}
 --- !u!114 &4193110011570142367
 MonoBehaviour:
   m_ObjectHideFlags: 0

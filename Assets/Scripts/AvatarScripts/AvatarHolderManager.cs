@@ -23,8 +23,8 @@ public class AvatarHolderManager : MonoBehaviour {
 
         }
     }
+  
 
-    
     public void LoadMetaverseScene() {
         StartCoroutine(_SceneLoading());
     }
@@ -37,5 +37,5 @@ public class AvatarHolderManager : MonoBehaviour {
        // SceneManager.LoadScene(1);
 
     }
-    
+   
 }
