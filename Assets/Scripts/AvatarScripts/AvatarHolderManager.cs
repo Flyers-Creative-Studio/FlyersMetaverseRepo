@@ -30,6 +30,7 @@ public class AvatarHolderManager : MonoBehaviour {
     }
 
     IEnumerator _SceneLoading() {
+        SetParent_DefaultAvatars();
         avatar.transform.SetParent(this.transform);
         yield return new WaitForSeconds(2f);
         avatar.SetActive(false);
@@ -37,5 +38,13 @@ public class AvatarHolderManager : MonoBehaviour {
        // SceneManager.LoadScene(1);
 
     }
-   
+    public void SetParent_DefaultAvatars()
+    {
+        MaleDefaultavatar.transform.SetParent(this.transform);
+        FemaleDefaultavatar.transform.SetParent(this.transform);
+        MaleDefaultavatar.SetActive(false);
+        FemaleDefaultavatar.SetActive(false);
+
+
+    }
 }

@@ -5,7 +5,7 @@ using System;
 public class AvatarLoadingManager : MonoBehaviour
 {
     [SerializeField] GameObject PlayerGrp;
-    [SerializeField] public GameObject Avatar, MaleDefaultAvatar, FemaleDefaultAvatar;
+    [SerializeField] public GameObject Avatar;
     [SerializeField] GameObject MaleDefaultAvatarObjectRef, FemaleDefaultAvatarObjectRef;
     [SerializeField] Avatar Male, Female;
      GameObject MainCamref;
@@ -17,45 +17,33 @@ public class AvatarLoadingManager : MonoBehaviour
     private void OnEnable() {
         MainCamref.GetComponent<CameraController>().enabled = false;
         if (AvatarHolderManager.instance.avatar == null) {
-          //  Debug.Log("in1");
 
             //for Default avtar
             if (AvatarHolderManager.instance.MaleAvatar) {
                 if (FemaleDefaultAvatarObjectRef != null) { 
                     
                     FemaleDefaultAvatarObjectRef.SetActive(false);
-                    FemaleDefaultAvatarObjectRef.transform.parent = null;
+                    FemaleDefaultAvatarObjectRef.transform.parent = AvatarHolderManager.instance.transform;
                 }
-                if (MaleDefaultAvatarObjectRef==null)
-                {
-                    MaleDefaultAvatarObjectRef = Instantiate(MaleDefaultAvatar, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-                   
-                }
-                else
-                {
-                    MaleDefaultAvatarObjectRef.SetActive(true);
+              
 
-                }
+                MaleDefaultAvatarObjectRef = AvatarHolderManager.instance.MaleDefaultavatar;
+                MaleDefaultAvatarObjectRef.SetActive(true);
+
                 MaleDefaultAvatarObjectRef.transform.SetParent(PlayerGrp.transform);
                 MaleDefaultAvatarObjectRef.transform.localPosition = Vector3.zero;
                 MaleDefaultAvatarObjectRef.transform.localRotation = Quaternion.identity;
                 if (MaleDefaultAvatarObjectRef.GetComponent<Animator>() != null) MaleDefaultAvatarObjectRef.GetComponent<Animator>().enabled = false;
 
-            } else {
+            }
+            else {
                 if (MaleDefaultAvatarObjectRef != null) { 
                     MaleDefaultAvatarObjectRef.SetActive(false);
-                    MaleDefaultAvatarObjectRef.transform.parent = null;
+                    MaleDefaultAvatarObjectRef.transform.parent = AvatarHolderManager.instance.transform;
                 }
-                if (FemaleDefaultAvatarObjectRef == null)
-                {
-                    FemaleDefaultAvatarObjectRef = Instantiate(FemaleDefaultAvatar, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-                   
-                }
-                else
-                {
-                    FemaleDefaultAvatarObjectRef.SetActive(true);
-
-                }
+               
+                FemaleDefaultAvatarObjectRef = AvatarHolderManager.instance.FemaleDefaultavatar;
+                FemaleDefaultAvatarObjectRef.SetActive(true);
 
                 FemaleDefaultAvatarObjectRef.transform.SetParent(PlayerGrp.transform);
                 FemaleDefaultAvatarObjectRef.transform.localPosition = Vector3.zero;

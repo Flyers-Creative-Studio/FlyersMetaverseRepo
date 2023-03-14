@@ -670,10 +670,10 @@ public class HelperUtil : MonoBehaviour
             }
             Slider downloadSlider = instance.downloadLoadingScreen.transform.GetChild(0).GetChild(0).GetComponent<Slider>();
             downloadSlider.value = 0;
-            Debug.Log(downloadingFileReference.GetDownloadStatus().Percent);
+           // Debug.Log(downloadingFileReference.GetDownloadStatus().Percent);
             while (!downloadingFileReference.GetDownloadStatus().IsDone)
             {
-                Debug.Log(downloadingFileReference.GetDownloadStatus().Percent);
+              //  Debug.Log(downloadingFileReference.GetDownloadStatus().Percent);
 
                 if (downloadingFileReference.GetDownloadStatus().TotalBytes > 0)
                 {

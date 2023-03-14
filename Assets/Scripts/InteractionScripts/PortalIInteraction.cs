@@ -38,19 +38,15 @@ public class PortalIInteraction : InteractableObject
             AvatarHolderManager.instance.avatar.transform.SetParent(AvatarHolderManager.instance.transform);
             AvatarHolderManager.instance.avatar.SetActive(false);
         }
-       
-           
+        AvatarHolderManager.instance.SetParent_DefaultAvatars();
+
+
         Debug.Log(sceneType);
         // StartCoroutine(StartLoad());
         //  HelperUtil.LoadScenesWithAdressable(sceneType.ToString(),"Scenes");
          HelperUtil.instance.LoadDownloadingScene(sceneType.ToString());
 
-        //AsyncOperationHandle obj= Addressables.LoadSceneAsync("Downloading", LoadSceneMode.Single);
-        //obj.Completed += (data) =>
-        //{
-        //    Addressables.LoadSceneAsync(_scene, LoadSceneMode.Single);
-
-        //};
+       
     }
   
 
