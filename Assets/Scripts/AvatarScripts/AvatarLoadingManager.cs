@@ -51,38 +51,36 @@ public class AvatarLoadingManager : MonoBehaviour
                 if (FemaleDefaultAvatarObjectRef.GetComponent<Animator>() != null) FemaleDefaultAvatarObjectRef.GetComponent<Animator>().enabled = false;
             }
             StartCoroutine(EnablePlayerObject());
-        }
-       
 
-    }
-    // Update is called once per frame
-    void Update() {
-        if (!PlayerGrp.activeInHierarchy) {
+        }
+        else
+        {
             //for Customized avtar
-            if (AvatarHolderManager.instance.avatar != null) {
-                if (AvatarHolderManager.instance != null && Avatar == null) {
-                    if (MaleDefaultAvatarObjectRef != null) Destroy(MaleDefaultAvatarObjectRef.gameObject);
-                    if (FemaleDefaultAvatarObjectRef != null) Destroy(FemaleDefaultAvatarObjectRef.gameObject);
+            if (AvatarHolderManager.instance.avatar != null)
+            {
+                if (AvatarHolderManager.instance != null && Avatar == null)
+                {
+                    //if (MaleDefaultAvatarObjectRef != null) Destroy(MaleDefaultAvatarObjectRef.gameObject);
+                    //if (FemaleDefaultAvatarObjectRef != null) Destroy(FemaleDefaultAvatarObjectRef.gameObject);
 
                     Avatar = AvatarHolderManager.instance.avatar;
                     if (Avatar.GetComponent<Animator>() != null) Avatar.GetComponent<Animator>().enabled = false;
                     Avatar.transform.SetParent(PlayerGrp.transform);
                     Avatar.transform.localPosition = Vector3.zero;
                     Avatar.transform.rotation = Quaternion.identity;
+                    Avatar.SetActive(true);
 
 
                 }
 
+                StartCoroutine(EnablePlayerObject());
 
             }
-
-            StartCoroutine(EnablePlayerObject());
-
         }
 
 
-
     }
+  
     IEnumerator EnablePlayerObject() {
         if (AvatarHolderManager.instance.avatar != null) AvatarHolderManager.instance.avatar.gameObject.SetActive(true);
 
@@ -91,15 +89,16 @@ public class AvatarLoadingManager : MonoBehaviour
         } else {
             PlayerGrp.GetComponent<Animator>().avatar = Female;
         }
+        PlayerGrp.SetActive(false);
+        MainCamref.GetComponent<CameraController>().enabled = false;
 
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.5f);
         PlayerGrp.SetActive(true);
         MainCamref.GetComponent<CameraController>().enabled = true;
 
         this.gameObject.SetActive(false);
     }
 
-   
    
 
 }

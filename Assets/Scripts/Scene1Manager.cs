@@ -8,9 +8,11 @@ public class Scene1Manager : MonoBehaviour
 {
     public static Scene1Manager Instance;
     public PlayerManager player;
-    [SerializeField] Button CloseButton, ProfileButton,GenderButton;
+    [SerializeField] Button CloseButton, ProfileButton;
+    public Button GenderButton;
     [SerializeField] GameObject CanvasObject, DefaultMale, DefaultFemale,Maincamera;
     [SerializeField] GameObject AvatarCamera;
+    public Transform DefaultAvatarsForUI;
     public static event Action OnGenderToggle;
 
     private void Awake()
@@ -51,9 +53,16 @@ public class Scene1Manager : MonoBehaviour
         player.gameObject.SetActive(false);
         Maincamera.gameObject.SetActive(false);
         AvatarCamera.SetActive(true);
-
-        DefaultMale.SetActive(AvatarHolderManager.instance.MaleAvatar);
-        DefaultFemale.SetActive(!AvatarHolderManager.instance.MaleAvatar);
+        if (AvatarHolderManager.instance.avatar==null)
+        {
+            DefaultMale.SetActive(AvatarHolderManager.instance.MaleAvatar);
+            DefaultFemale.SetActive(!AvatarHolderManager.instance.MaleAvatar);
+        }
+        else
+        {
+            AvatarHolderManager.instance.avatarForUI.SetActive(true);
+        }
+      
     }
     public void GenderToggleListener()
     {
@@ -61,10 +70,15 @@ public class Scene1Manager : MonoBehaviour
         DefaultMale.SetActive(AvatarHolderManager.instance.MaleAvatar);
         DefaultFemale.SetActive(!AvatarHolderManager.instance.MaleAvatar);
     }
-    void ResetAllDefaultAvatars()
+    public void ResetAllDefaultAvatars()
     {
-        DefaultMale.SetActive(false);
-        DefaultFemale.SetActive(false);
+        //DefaultMale.SetActive(false);
+        //DefaultFemale.SetActive(false);
+
+        foreach (Transform T in DefaultAvatarsForUI)
+        {
+            T.gameObject.SetActive(false);
+        }
     }
     private void OnDisable()
     {

@@ -603,10 +603,10 @@ public class HelperUtil : MonoBehaviour
                 CallAfterDelay(() =>
                 {
                     LoadScenesWithAdressable(sceneName, "Scenes");
-                }, 2f);
+                }, 1f);
             };
 
-        }, 2f);
+        }, .2f);
 
       
     }

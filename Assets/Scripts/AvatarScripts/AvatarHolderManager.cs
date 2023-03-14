@@ -9,7 +9,7 @@ public class AvatarHolderManager : MonoBehaviour {
 
         get; set;
     }
-    public GameObject avatar;
+    public GameObject avatar,avatarForUI;
     public GameObject MaleDefaultavatar,FemaleDefaultavatar;
     public bool MaleAvatar;
     private void Awake() {
@@ -25,17 +25,23 @@ public class AvatarHolderManager : MonoBehaviour {
     }
   
 
-    public void LoadMetaverseScene() {
+    public void LoadAvatars() {
         StartCoroutine(_SceneLoading());
     }
 
     IEnumerator _SceneLoading() {
         SetParent_DefaultAvatars();
         avatar.transform.SetParent(this.transform);
+        avatarForUI.transform.SetParent(Scene1Manager.Instance.DefaultAvatarsForUI);
+        avatarForUI.transform.localPosition = Vector3.zero;
+        avatarForUI.transform.localScale = Vector3.one;
+        avatarForUI.transform.localRotation = Quaternion.identity;
+        Scene1Manager.Instance.ResetAllDefaultAvatars();
+        avatarForUI.SetActive(true);
         yield return new WaitForSeconds(2f);
         avatar.SetActive(false);
 
-       // SceneManager.LoadScene(1);
+      
 
     }
     public void SetParent_DefaultAvatars()
@@ -47,4 +53,5 @@ public class AvatarHolderManager : MonoBehaviour {
 
 
     }
+
 }
