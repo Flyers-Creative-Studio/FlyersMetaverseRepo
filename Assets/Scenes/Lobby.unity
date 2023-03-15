@@ -449,7 +449,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &450328153
 GameObject:
@@ -866,8 +866,6 @@ MonoBehaviour:
   ProfileButton: {fileID: 1614592212}
   GenderButton: {fileID: 209891463}
   CanvasObject: {fileID: 1367369519}
-  DefaultMale: {fileID: 1655588929}
-  DefaultFemale: {fileID: 4790387510944029237}
   Maincamera: {fileID: 539580419108066922}
   AvatarCamera: {fileID: 1154294542}
   DefaultAvatarsForUI: {fileID: 1383111832}
@@ -1057,7 +1055,7 @@ RectTransform:
   m_Children:
   - {fileID: 1614592211}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1317,7 +1315,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1002648895
 GameObject:
@@ -1690,7 +1688,7 @@ Transform:
   m_LocalScale: {x: 0, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1154294544
 MonoBehaviour:
@@ -1926,7 +1924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1367369520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2007,7 +2005,7 @@ RectTransform:
   - {fileID: 610218319}
   - {fileID: 209891462}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2056,8 +2054,8 @@ Transform:
   m_Children:
   - {fileID: 1655588928}
   - {fileID: 4790387510944029236}
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 1950813732}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1519968211
 GameObject:
@@ -3018,6 +3016,9 @@ MonoBehaviour:
   MaleDefaultavatar: {fileID: 1311204022}
   FemaleDefaultavatar: {fileID: 1785692355}
   MaleAvatar: 1
+  DefaultMale: {fileID: 1655588929}
+  DefaultFemale: {fileID: 4790387510944029237}
+  DefaultAvatarsForUI: {fileID: 1383111832}
 --- !u!4 &1950813732
 Transform:
   m_ObjectHideFlags: 0
@@ -3031,6 +3032,7 @@ Transform:
   m_Children:
   - {fileID: 1311204021}
   - {fileID: 1785692354}
+  - {fileID: 1383111832}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3063,7 +3065,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2024074594
 MonoBehaviour:
@@ -3072,7 +3074,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2024074591}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c68bddd31c080734ea5ca8b2e8f41cdc, type: 3}
   m_Name: 
@@ -4251,7 +4253,7 @@ PrefabInstance:
     - target: {fileID: 1128957977238025960, guid: 31522cea6f6d0704b836cf922f744e00,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1128957977238025960, guid: 31522cea6f6d0704b836cf922f744e00,
         type: 3}

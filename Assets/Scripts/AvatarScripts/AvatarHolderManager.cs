@@ -12,6 +12,9 @@ public class AvatarHolderManager : MonoBehaviour {
     public GameObject avatar,avatarForUI;
     public GameObject MaleDefaultavatar,FemaleDefaultavatar;
     public bool MaleAvatar;
+    [SerializeField] public GameObject DefaultMale, DefaultFemale;
+    public Transform DefaultAvatarsForUI;
+
     private void Awake() {
         if (instance == null) {
             instance = this;
@@ -32,7 +35,7 @@ public class AvatarHolderManager : MonoBehaviour {
     IEnumerator _SceneLoading() {
         SetParent_DefaultAvatars();
         avatar.transform.SetParent(this.transform);
-        avatarForUI.transform.SetParent(Scene1Manager.Instance.DefaultAvatarsForUI);
+        avatarForUI.transform.SetParent(DefaultAvatarsForUI);
         avatarForUI.transform.localPosition = Vector3.zero;
         avatarForUI.transform.localScale = Vector3.one;
         avatarForUI.transform.localRotation = Quaternion.identity;
@@ -53,5 +56,19 @@ public class AvatarHolderManager : MonoBehaviour {
 
 
     }
+
+    public void SetAvatarForUI()
+    {
+        if (avatar == null)
+        {
+            DefaultMale.SetActive(AvatarHolderManager.instance.MaleAvatar);
+            DefaultFemale.SetActive(!AvatarHolderManager.instance.MaleAvatar);
+        }
+        else
+        {
+            avatarForUI.SetActive(true);
+        }
+    }
+        
 
 }

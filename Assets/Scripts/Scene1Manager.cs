@@ -10,9 +10,8 @@ public class Scene1Manager : MonoBehaviour
     public PlayerManager player;
     [SerializeField] Button CloseButton, ProfileButton;
     public Button GenderButton;
-    [SerializeField] GameObject CanvasObject, DefaultMale, DefaultFemale,Maincamera;
+    [SerializeField] GameObject CanvasObject, Maincamera;
     [SerializeField] GameObject AvatarCamera;
-    public Transform DefaultAvatarsForUI;
     public static event Action OnGenderToggle;
 
     private void Awake()
@@ -34,7 +33,7 @@ public class Scene1Manager : MonoBehaviour
         Maincamera.GetComponent<CameraController>().enabled = true;
 
         CloseButton.onClick.AddListener(() => CloseButtonListener());
-        ProfileButton.onClick.AddListener(() => SettingButtonListener());
+        ProfileButton.onClick.AddListener(() => ProfileButtonListener());
         GenderButton.onClick.AddListener(() => GenderToggleListener());
     }
     void CloseButtonListener()
@@ -43,39 +42,39 @@ public class Scene1Manager : MonoBehaviour
         CanvasObject.SetActive(false);
         player.gameObject.SetActive(true);
         Maincamera.gameObject.SetActive(true);
-        ProfileButton.gameObject.SetActive(true);
         AvatarCamera.SetActive(false);
+        HelperUtil.CallAfterDelay(() => { 
+        
+        ProfileButton.gameObject.SetActive(true);
+
+        }, 1f);
     }
-    void SettingButtonListener()
+    void ProfileButtonListener()
     {
+        if (AvatarHolderManager.instance.avatar!=null) {
+            GenderButton.gameObject.SetActive(false); 
+        }
         ProfileButton.gameObject.SetActive(false);
         CanvasObject.SetActive(true);
         player.gameObject.SetActive(false);
         Maincamera.gameObject.SetActive(false);
         AvatarCamera.SetActive(true);
-        if (AvatarHolderManager.instance.avatar==null)
-        {
-            DefaultMale.SetActive(AvatarHolderManager.instance.MaleAvatar);
-            DefaultFemale.SetActive(!AvatarHolderManager.instance.MaleAvatar);
-        }
-        else
-        {
-            AvatarHolderManager.instance.avatarForUI.SetActive(true);
-        }
-      
+       
+        AvatarHolderManager.instance.SetAvatarForUI();
+
+
     }
     public void GenderToggleListener()
     {
         AvatarHolderManager.instance.MaleAvatar = !AvatarHolderManager.instance.MaleAvatar;
-        DefaultMale.SetActive(AvatarHolderManager.instance.MaleAvatar);
-        DefaultFemale.SetActive(!AvatarHolderManager.instance.MaleAvatar);
+        AvatarHolderManager.instance.DefaultMale.SetActive(AvatarHolderManager.instance.MaleAvatar);
+        AvatarHolderManager.instance.DefaultFemale.SetActive(!AvatarHolderManager.instance.MaleAvatar);
     }
     public void ResetAllDefaultAvatars()
     {
-        //DefaultMale.SetActive(false);
-        //DefaultFemale.SetActive(false);
+        
 
-        foreach (Transform T in DefaultAvatarsForUI)
+        foreach (Transform T in AvatarHolderManager.instance.DefaultAvatarsForUI)
         {
             T.gameObject.SetActive(false);
         }
