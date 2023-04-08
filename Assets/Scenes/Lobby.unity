@@ -868,7 +868,6 @@ MonoBehaviour:
   CanvasObject: {fileID: 1367369519}
   Maincamera: {fileID: 539580419108066922}
   AvatarCamera: {fileID: 1154294542}
-  DefaultAvatarsForUI: {fileID: 1383111832}
 --- !u!1 &767877440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,6 +1391,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1002648895}
   m_CullTransparentMesh: 1
+--- !u!1001 &1106515296
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: bf05ac959aa73d5478c12086181d7749,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf05ac959aa73d5478c12086181d7749,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf05ac959aa73d5478c12086181d7749,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf05ac959aa73d5478c12086181d7749,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf05ac959aa73d5478c12086181d7749,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf05ac959aa73d5478c12086181d7749,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf05ac959aa73d5478c12086181d7749,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf05ac959aa73d5478c12086181d7749,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf05ac959aa73d5478c12086181d7749,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf05ac959aa73d5478c12086181d7749,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf05ac959aa73d5478c12086181d7749,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf05ac959aa73d5478c12086181d7749,
+        type: 3}
+      propertyPath: m_Name
+      value: Metaverse_Lobby
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bf05ac959aa73d5478c12086181d7749, type: 3}
 --- !u!1 &1132377897
 GameObject:
   m_ObjectHideFlags: 0
@@ -2344,7 +2412,7 @@ GameObject:
   - component: {fileID: 1645346276}
   - component: {fileID: 1645346275}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3081,6 +3149,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   avatarUrl: https://models.readyplayer.me/640f0a335ff9a2cd66c482f2.glb
   avatarUrl2: https://d1a370nemizbjq.cloudfront.net/209a1bc2-efed-46c5-9dfd-edc8a1d9cbe4.glb
+--- !u!1 &2041257280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2715397176555384385, guid: bf05ac959aa73d5478c12086181d7749,
+    type: 3}
+  m_PrefabInstance: {fileID: 1106515296}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &2041257284
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041257280}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4928350645542962685, guid: bf05ac959aa73d5478c12086181d7749, type: 3}
 --- !u!1 &2051299823
 GameObject:
   m_ObjectHideFlags: 0
@@ -3670,7 +3758,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539580419163091541}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.72998047, y: 0.069992065, z: -0.76600647}
+  m_LocalPosition: {x: 0.72998047, y: -0.79, z: -0.76600647}
   m_LocalScale: {x: 62.541058, y: 62.541058, z: 62.541058}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3757,7 +3845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &539580419557049833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4303,6 +4391,11 @@ PrefabInstance:
     - target: {fileID: 1128957977238025960, guid: 31522cea6f6d0704b836cf922f744e00,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526652770553406412, guid: 31522cea6f6d0704b836cf922f744e00,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
